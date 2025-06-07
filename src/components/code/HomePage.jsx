@@ -3,9 +3,9 @@ import Pdf from '../fragments/Pdf'
 
 const HomePage = () => {
   return (
-   <>
-<Pdf/>
-   </>
+    <>
+      <Pdf />
+    </>
   )
 }
 

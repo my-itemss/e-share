@@ -161,7 +161,7 @@ function Pdf() {
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 font-inter">
+    <div className="min-h-screen bg-gray-100  flex items-center justify-center p-4 font-inter">
       <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-3xl border border-gray-200">
         <h1 className="text-4xl font-extrabold text-center text-purple-800 mb-8 tracking-tight">
           Snap Summary 📚
@@ -247,7 +247,7 @@ function Pdf() {
             <div className="mt-4 flex justify-end space-x-4">
               <button
                 onClick={downloadSummaryAsPdf}
-                className="bg-green-200 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+                className="bg-green-200 hover:bg-green-700 text-white  py-1 px-3 rounded-md focus:outline-none focus:shadow-outline"
               >
                 Download as PDF
               </button>
