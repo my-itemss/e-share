@@ -1,34 +1,34 @@
 import { useState } from "react";
-
 const API = import.meta.env.VITE_API_URL;
 
-export default function ReceiveCard() {
+export default function ReceiveCard({
+  onComplete,
+}: {
+  onComplete: () => void;
+}) {
   const [key, setKey] = useState("");
 
-  const download = () => {
-    if (!key) return;
-    window.open(`${API}/f/${key}`, "_blank");
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && key) {
+      window.open(`${API}/f/${key}`, "_blank");
+      onComplete();
+    }
   };
 
   return (
-    <div className="bg-gray-200 rounded-xl p-6 shadow-lg">
-      <h2 className="text-xl font-semibold">Receive</h2>
-
-      <div className="flex gap-3 mt-4">
-        <input
-          className="flex-1 px-4 py-2 rounded-lg outline-none"
-          placeholder="Input key"
-          value={key}
-          onChange={(e) => setKey(e.target.value)}
-        />
-
-        <button
-          onClick={download}
-          className="px-4 rounded-lg bg-gray-300 hover:bg-gray-400"
-        >
-          ↓
-        </button>
-      </div>
+    <div className="bg-white p-8 rounded-[2.5rem] space-y-6">
+      <h2 className="text-lg font-bold text-slate-800">Enter File ID</h2>
+      <input
+        autoFocus
+        value={key}
+        onChange={(e) => setKey(e.target.value)}
+        onKeyDown={handleKeyDown}
+        placeholder="e.g. 12345"
+        className="w-full bg-slate-50 border-none p-5 rounded-2xl outline-none focus:ring-4 focus:ring-indigo-50 transition-all font-medium text-center text-xl"
+      />
+      <p className="text-center text-[10px] font-bold text-slate-300 uppercase tracking-[0.2em]">
+        Press Enter to Fetch
+      </p>
     </div>
   );
 }
