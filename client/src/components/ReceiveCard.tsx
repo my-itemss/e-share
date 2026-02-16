@@ -26,7 +26,7 @@ export default function ReceiveCard({ variant : _variant, onComplete }: ReceiveC
         value={key}
         onChange={(e) => setKey(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder="e.g. 12345"
+        placeholder="e.g. f/PdqJbI2-8hh"
         className="w-full bg-slate-50 border-none p-5 rounded-2xl outline-none focus:ring-4 focus:ring-indigo-50 transition-all font-medium text-center text-xl"
       />
       <p className="text-center text-[10px] font-bold text-slate-300 uppercase tracking-[0.2em]">
