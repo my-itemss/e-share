@@ -1,17 +1,20 @@
 import { useState } from "react";
 const API = import.meta.env.VITE_API_URL;
 
-export default function ReceiveCard({
-  onComplete,
-}: {
-  onComplete: () => void;
-}) {
+// Just adding the type definition here
+interface ReceiveCardProps {
+  variant: "preview" | "active";
+  onComplete?: () => void;
+}
+
+export default function ReceiveCard({ variant : _variant, onComplete }: ReceiveCardProps) {
   const [key, setKey] = useState("");
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && key) {
       window.open(`${API}/f/${key}`, "_blank");
-      onComplete();
+      // Added a check to make sure onComplete exists
+      if (onComplete) onComplete();
     }
   };
 

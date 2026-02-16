@@ -1,6 +1,12 @@
 import { useRef } from "react";
 
-export default function SendCard({ onFile }: { onFile: (file: File) => void }) {
+// Just adding the type definition here
+interface SendCardProps {
+  variant: "preview" | "active"; 
+  onFile?: (file: File) => void;
+}
+
+export default function SendCard({ variant:_variant, onFile }: SendCardProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -25,7 +31,8 @@ export default function SendCard({ onFile }: { onFile: (file: File) => void }) {
         hidden
         onChange={(e) => {
           const file = e.target.files?.[0];
-          if (file) onFile(file);
+          // Added a check to make sure onFile exists before calling it
+          if (file && onFile) onFile(file);
         }}
       />
     </div>
